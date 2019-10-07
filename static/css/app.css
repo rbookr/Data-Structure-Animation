@@ -1,0 +1,21 @@
+html {
+  height: 100%;
+  width: 100%; }
+
+body {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  flex-shrink: 0; }
+
+.playground {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.bottom {
+  background: orange;
+  text-align: center; }

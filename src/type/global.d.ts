@@ -1,5 +1,25 @@
 declare var exports:any;
-declare var xyz:string;
-interface hello {
-    a:number
+declare var d3:any;
+
+
+interface frame {
+    dot_src:"string"
+    log:"string"
 }
+
+declare const enum engine_type {
+    dot = "dot",
+    circo = "circo",
+    fdp = "fdp",
+    neato = "neato",
+    osage = "osage",
+    patchwork = "patchwork",
+    twopi = "twopi"
+}
+
+interface player_config {
+    name:string
+    duration:number
+    engine:engine_type
+}
+

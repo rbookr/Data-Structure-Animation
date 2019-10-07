@@ -4,5 +4,8 @@
     },
     "dependencies": {
         "graphviz": "^0.0.9"
+    },
+    "devDependencies": {
+        "@types/node": "^12.7.11"
     }
 }
