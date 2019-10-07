@@ -1,5 +1,8 @@
 {
-  "dependencies": {
-    "graphviz": "^0.0.9"
-  }
+    "scripts": {
+        "build": "tsc --build tsconfig.json"
+    },
+    "dependencies": {
+        "graphviz": "^0.0.9"
+    }
 }
