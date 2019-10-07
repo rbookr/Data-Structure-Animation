@@ -20,6 +20,9 @@ class APP {
   
 }
 
+/* 渲染组件 */
+new Vue({el:'#ui'})
+
 var app = new APP()
 
 app.http.get('dump.json').then( (res)=>{

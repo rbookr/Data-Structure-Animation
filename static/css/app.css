@@ -16,6 +16,14 @@ body {
   justify-content: center;
   align-items: center; }
 
-.bottom {
-  background: orange;
-  text-align: center; }
+.ui ul {
+  display: flex; }
+
+.ui .ui-panel {
+  display: flex; }
+  .ui .ui-panel .process {
+    flex-grow: 1; }
+    .ui .ui-panel .process .process-info {
+      background: orange;
+      width: 30%;
+      height: 100%; }
