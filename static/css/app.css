@@ -4,26 +4,31 @@ html {
 
 body {
   height: 100%;
+  display: flex; }
+
+.app {
+  height: 100%;
+  width: 100%;
   display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  flex-shrink: 0; }
+  flex-direction: column; }
 
 .playground {
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  flex-grow: 1; }
 
-.ui ul {
-  display: flex; }
-
-.ui .ui-panel {
-  display: flex; }
-  .ui .ui-panel .process {
-    flex-grow: 1; }
-    .ui .ui-panel .process .process-info {
-      background: orange;
-      width: 30%;
-      height: 100%; }
+.ui {
+  flex-grow: 0; }
+  .ui ul {
+    display: flex; }
+  .ui .ui-panel {
+    display: flex; }
+    .ui .ui-panel .process {
+      flex-grow: 1; }
+      .ui .ui-panel .process .process-info {
+        background: orange;
+        width: 30%;
+        height: 100%; }
