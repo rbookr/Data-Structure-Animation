@@ -22,20 +22,28 @@ let template = `
   <div class="playground">
     <div id="graph" style="text-align: center;"></div>
   </div>
+  <div class="logbar">
+    <p>{{log}}</p>
+  </div>
 
 <div class="ui">
   <div class="ui-panel">
-  <div class="contorl">
-    <ul>
-      <li><button class="ui-button auto-play">自动播放</button></li>
-      <li><button class="ui-button pre-frame">上一帧</button></li>
-      <li><button class="ui-button next-frame">下一帧</button></li>
-      <li><button class="ui-button next-frame">停止</button></li>
-    </ul>
-  </div>
+    <div class="contorl">
+      <ul>
+        <li><button class="ui-button auto-play"  data-tooltip="播放"><span class="iconfont icon-bofang"></span></button></li>
+        <li><button class="ui-button pre-frame"  data-tooltip="上一帧"><span class="iconfont icon-houtuiyizhencopy"></span></button></li>
+        <li><button class="ui-button next-frame" data-tooltip="下一帧"><span class="iconfont icon-qianjinyizhen"></span></button></li>
+        <li><button class="ui-button next-frame" data-tooltip="停止"><span class="iconfont icon-stop2"></span></button></li>
+      </ul>
+    </div>
     <div class="process">
       <div class="process-info">
       </div>
+    </div>
+    <div class="contorl">
+      <ul>
+        <li><button class="ui-button auto-play"  data-tooltip="关于作者"><span class="iconfont icon-gerenziliao"></span></button></li>
+      </ul>
     </div>
   </div>
 </div>
@@ -72,15 +80,12 @@ new Vue({
     })
   },
   computed:{
-    frames_length:function (){
-      if( this.player && this.player.frames)
-          return this.player.frames.length
-      return 0
-    },
-    at:function(){
-      if( this.player && this.player.at)
-        return this.player.at
-      return 0
+    log:function(){
+      if( this.player && this.player.frames){
+          let at =  this.player.at
+          return this.player.frames[at].log || "no log"
+      }
+      return "log Bar"
     },
     info:function(){
       if( this.player && this.player.frames){

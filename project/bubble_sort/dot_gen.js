@@ -47,18 +47,22 @@ graphviz.parse('base.dot',(g)=>{
       set_cmp_node_color(j,j+1);
 
       player.push({
-        dot_src:g.to_dot()
+        dot_src:g.to_dot(),
+        log:`比较 a[${j}] 和 a[${j+1}] 两个元素`
       })
+      let swapFlag = 0
       if( arr[j] > arr[j+1]){
         let t = arr[j];
         arr[j] = arr[j+1];
         arr[j+1] = t;
+        swapFlag = 1;
       }
       set_nodes_to_g()
       let dot_src= g.to_dot()
       //fs.writeFileSync(`b_${++frame_id}.dot`, dot_str,{encoding:'utf-8'});
       player.push({
-        dot_src
+        dot_src,
+        log: swapFlag ? `发生了交换` : `没有交换`
       })
     }
 

@@ -1,4 +1,5 @@
 html {
+  overflow: hidden;
   height: 100%;
   width: 100%; }
 
@@ -24,6 +25,8 @@ body {
   flex-grow: 0; }
   .ui ul {
     display: flex; }
+    .ui ul li button {
+      padding: 2px 5px; }
   .ui .ui-panel {
     display: flex; }
     .ui .ui-panel .process {

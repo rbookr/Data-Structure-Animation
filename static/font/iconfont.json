@@ -1,0 +1,170 @@
+{
+  "id": "690693",
+  "name": "dsa2",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "593482",
+      "name": "全屏",
+      "font_class": "weibiaoti10",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "593483",
+      "name": "缩小",
+      "font_class": "weibiaoti11",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "1050533",
+      "name": "info",
+      "font_class": "gerenziliao",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "1055008",
+      "name": "输入",
+      "font_class": "shuru",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "1115023",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "1164752",
+      "name": "睁眼",
+      "font_class": "zhengyan",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "1200862",
+      "name": "关于",
+      "font_class": "guanyu",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "1637597",
+      "name": "数据",
+      "font_class": "histogram",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "2392487",
+      "name": "闭眼",
+      "font_class": "biyan",
+      "unicode": "e7d3",
+      "unicode_decimal": 59347
+    },
+    {
+      "icon_id": "2732801",
+      "name": "恶意代码",
+      "font_class": "daima",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "2756215",
+      "name": "前进一帧",
+      "font_class": "qianjinyizhen",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "2797298",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "2800346",
+      "name": "描述文本",
+      "font_class": "miaoshuwenben",
+      "unicode": "e6d0",
+      "unicode_decimal": 59088
+    },
+    {
+      "icon_id": "2825243",
+      "name": "交换-上",
+      "font_class": "jiaohuan-shang",
+      "unicode": "e68b",
+      "unicode_decimal": 59019
+    },
+    {
+      "icon_id": "2825248",
+      "name": "交换-下",
+      "font_class": "jiaohuan-xia",
+      "unicode": "e68e",
+      "unicode_decimal": 59022
+    },
+    {
+      "icon_id": "2862316",
+      "name": "交换资源",
+      "font_class": "swap",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "3262924",
+      "name": "后退一帧",
+      "font_class": "houtuiyizhencopy",
+      "unicode": "e6b0",
+      "unicode_decimal": 59056
+    },
+    {
+      "icon_id": "3367903",
+      "name": "预置位-覆盖",
+      "font_class": "yuzhiwei-fugai",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "3404036",
+      "name": "切换",
+      "font_class": "qiehuan",
+      "unicode": "e6ce",
+      "unicode_decimal": 59086
+    },
+    {
+      "icon_id": "4242752",
+      "name": "info",
+      "font_class": "info",
+      "unicode": "e6a1",
+      "unicode_decimal": 59041
+    },
+    {
+      "icon_id": "4893829",
+      "name": "覆盖",
+      "font_class": "fugai-copy",
+      "unicode": "e6d1",
+      "unicode_decimal": 59089
+    },
+    {
+      "icon_id": "7687783",
+      "name": "stop",
+      "font_class": "stop1",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "8061826",
+      "name": "stop",
+      "font_class": "stop2",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    }
+  ]
+}
