@@ -38,3 +38,21 @@ body {
     }
   }
 }
+
+.fixed {
+  position: fixed;
+  background: rgba($color: #fff, $alpha: 0.8);
+  border:1px solid #000;
+}
+
+
+.infoPanel {
+  left:10px;
+  top:10px;
+  font-size:10px;
+  h3 {
+    text-align: center;
+    padding: 5px;
+    background: gray;
+  }
+}

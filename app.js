@@ -39,22 +39,26 @@ let template = `
     </div>
   </div>
 </div>
+
+  <div class="infoPanel fixed">
+    <h3>Info</h3>
+    <pre>{{ info }}</pre>
+  </div>
 </div>
 `
 /* 渲染组件 */
 new Vue({
   el:'#app',
   template,
-	data:function(){
-	  return {
-	    app:{},
-	    player:{},
-	    name:"Data Structure Animation App by Rainboy",
-	  }
-	},
-	async mounted(){
-	  console.log('hello ap')
-	  var self = this
+  data:function(){
+    return {
+      app:{},
+      player:{},
+      name:"Data Structure Animation App by Rainboy",
+    }
+  },
+  async mounted(){
+    var self = this
     self.app = new APP()
 
     this.player =  await self.app.http.get('dump.json').then( (res)=>{
@@ -66,6 +70,28 @@ new Vue({
     this.player.init( function(){
       self.player.auto_player()
     })
-	}
+  },
+  computed:{
+    frames_length:function (){
+      if( this.player && this.player.frames)
+          return this.player.frames.length
+      return 0
+    },
+    at:function(){
+      if( this.player && this.player.at)
+        return this.player.at
+      return 0
+    },
+    info:function(){
+      if( this.player && this.player.frames){
+        return JSON.stringify({
+          at:this.player.at,
+          frames_length:this.player.frames.length,
+          config:this.player.config,
+        },null,4);
+      }
+      return {}
+    }
+  }
 })
 

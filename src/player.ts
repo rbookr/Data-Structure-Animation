@@ -70,7 +70,6 @@ class Player {
     }
 
     play_frame_at(idx:number){
-      console.log(this.frames[idx].dot_src)
       this.graphviz.renderDot(this.frames[idx].dot_src)
     }
 
