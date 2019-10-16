@@ -1,5 +1,6 @@
 {
     "scripts": {
+        "dev":"browser-sync start --server --files \"index.html,*.css,*.js,static/css/*.css\"",
         "build": "tsc --build tsconfig.json"
     },
     "dependencies": {
