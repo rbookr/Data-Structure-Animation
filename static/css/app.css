@@ -43,6 +43,13 @@ body {
         height: 100%;
         justify-content: center;
         align-items: center; }
+        .ui .ui-panel .process .process-text-info input {
+          width: 30px; }
+        .ui .ui-panel .process .process-text-info input::-webkit-outer-spin-button,
+        .ui .ui-panel .process .process-text-info input::-webkit-inner-spin-button {
+          -webkit-appearance: none; }
+        .ui .ui-panel .process .process-text-info input[type="number"] {
+          -moz-appearance: textfield; }
       .ui .ui-panel .process .process-info {
         background: orange;
         height: 100%; }

@@ -10,7 +10,9 @@ class Player {
         let default_config:player_config = {
             name:"No Name",
             duration:1000,
+            delay:100,
             engine:engine_type.dot,
+            log: false
         } //@ts-ignore
         this.config = Object.assign(default_config,config)
         this.frames = []
@@ -56,10 +58,10 @@ class Player {
         .transition(function () {
           return d3.transition("main")
             .ease(d3.easeLinear)
-            .delay(500)
-            .duration(1500);
+            .delay(self.config.delay||100)
+            .duration(self.config.duration || 1000);
         })
-        .logEvents(true)
+        .logEvents(self.config.log || false)
         .engine(this.config.engine)
         .on("initEnd",function(){
           console.log("initEnd")
@@ -70,7 +72,9 @@ class Player {
     }
 
     play_frame_at(idx:number){
-      this.graphviz.renderDot(this.frames[idx].dot_src)
+        this.playing = true
+        let self =this
+        this.graphviz.renderDot(this.frames[idx].dot_src).on('end',()=>{self.playing = false,self.at = idx})
     }
 
     auto_player(){

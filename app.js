@@ -33,13 +33,13 @@ let template = `
       <div class="ui-panel">
         <div class="contorl">
           <ul>
-            <li><button class="ui-button pre-frame"  data-tooltip="上一帧"><span class="iconfont icon-houtuiyizhencopy"></span></button></li>
-            <li><button class="ui-button next-frame" data-tooltip="下一帧"><span class="iconfont icon-qianjinyizhen"></span></button></li>
+            <li><button class="ui-button pre-frame" :disabled="isPlaying"  data-tooltip="上一帧" @click="PlayPre"><span class="iconfont icon-houtuiyizhencopy"></span></button></li>
+            <li><button class="ui-button next-frame" :disabled="isPlaying" data-tooltip="下一帧" @click="PlayNext"><span class="iconfont icon-qianjinyizhen"></span></button></li>
           </ul>
         </div>
         <div class="process">
           <div class="process-text-info">
-            <span><input type="number" :value="info.at">/</span>
+            <span><input type="number" :value="info.at+1" ref="input" @keyup.enter="changeInput"> / </span>
             <span>{{info.frames_length}}</span>
           </div>
           <div class="process-info" :style="{width: process+'%'}">
@@ -102,7 +102,9 @@ new Vue({
   },
   async mounted(){
     var self = this
+    window.toggleInfoShow  = function(){ self.toggleInfoShow() }
     self.app = new APP()
+
     if( self.app.get_url_hash() == ""){
       self.ui.allShow= false
       await self.app.http.get('list.json').then( (res)=>{
@@ -118,8 +120,38 @@ new Vue({
     })
 
     this.player.init( function(){
-      self.player.auto_player()
+      //self.player.auto_player()
+      self.player.play_frame_at(0)
     })
+
+  },
+  methods:{
+    changeInput(){
+      console.log(this.$refs.input.value)
+      let val = parseInt(this.$refs.input.value)
+      if( val <1)
+        val=1;
+      else if (val >this.info.frames_length )
+        val =this.info.frames_length 
+      val--;
+      this.player.play_frame_at(val)
+    },
+    PlayNext(){
+      let next = this.info.at +1
+      console.log(next)
+      if( next < this.info.frames_length ){
+        this.player.play_frame_at(next)
+      }
+    },
+    PlayPre(){
+      let pre = this.info.at -1
+      console.log(pre)
+      if( pre >=0)
+        this.player.play_frame_at(pre)
+    },
+    toggleInfoShow(){
+      this.ui.infoShow = !this.ui.infoShow;
+    }
   },
   computed:{
     log:function(){
@@ -132,6 +164,7 @@ new Vue({
     info:function(){
       if( this.player && this.player.frames){
         return {
+          playing:this.player.playing,
           at:this.player.at,
           frames_length:this.player.frames.length,
           config:this.player.config,
@@ -144,6 +177,11 @@ new Vue({
         return (this.player.at +1)/(this.player.frames.length) * 100
       }
       return 0;
+    },
+    isPlaying:function(){
+      if( this.player && this.player.playing)
+        return true;
+      return false;
     }
   }
 })

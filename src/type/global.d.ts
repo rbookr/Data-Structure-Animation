@@ -20,6 +20,8 @@ declare const enum engine_type {
 interface player_config {
     name:string
     duration:number
+    delay:number
     engine:engine_type
+    log:Boolean | undefined
 }
 
