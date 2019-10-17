@@ -1,3 +1,4 @@
 [
-    {"name":"冒泡排序","link":"bubble_sort"}
+    {"name":"冒泡排序","link":"bubble_sort"},
+    {"name":"极大团计数","link":"maximal_clique"}
 ]

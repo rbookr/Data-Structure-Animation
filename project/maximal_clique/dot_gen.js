@@ -1,9 +1,18 @@
+/* 极大团 Bron-Kerbosch算法 */
 const graphviz = require("graphviz")
 const {Player}= require("../../lib/player")
-var fs = require('fs')
+require("../../lib/graphviz_plugin")
 
-var player = new Player({ name:"bubble sort",engine:'neato'})
+var player = new Player()
+player.config.delay = 0
+player.config.duration= 100
+
+const lib = require("./lib.js")
+
+var fs = require('fs')
 var g
+
+var node_idx_cnt = 0;
 
 function parse(name){
   return new Promise( (res,rej)=>{
@@ -13,98 +22,145 @@ function parse(name){
   })
 }
 
-/* 树上的一个结点 */
-class Node {
-  constructor(id,sum){
-    this.id = id
-    this.sum = sum
-    this.l = 0;
-    this.r = 0;
-    this.x = 0;
-    this.y = 0; // 根据深度决定
-  }
-  to_lable(){
-    return `{id:${this.id}|sum:${this.sum}}`
-  }
-  to_pos(){
-    return `${this.x},${this.y}!`
-  }
-  copy_from(node){
-    this.sum = node.sum
-    this.l = node.l;
-    this.r = node.r;
-    this.x = node.x;
-    this.y = node.y; // 根据深度决定
-  }
+
+var G = [
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+]
+
+var _map1=[0,'1','3','4','x','y']
+var _map2 = {
+  '1':1,
+  '3':2,
+  '4':3,
+  "x":4,
+  "y":5
+}
+var data = [ ['1','x'], ['1','y'], ['x','y'], ['x','3'], ['x','4'], ['y','3'], ['y','4'], ['1','3'], ['1','4'] ]
+
+
+
+/* 建立图 */
+for( let e of data){
+  let i = _map2[e[0]] 
+  let j = _map2[e[1]] 
+  //console.log(i,j)
+  //console.log(e)
+  G[i][j] =  G[j][i] = 1;
 }
 
-const margin = 3;
-
-// 初始化0结点
-var tree_nodes = [ new Node(0,0)];
-
-
-//=========== 主席树
-var org_array = [0,2,4,2,1,3]
-var cnt =0;
-var root = [0]
-var root_pos = [0,3,5,9.5,12.5,14.5];
-
-function addEdge( node1,node2){
-  if( node2 != 0){
-    g.addEdge(node1+"",node2+"");
-  }
+function LabelStringify(now,may,used){
+  let now_a = Array.isArray(now) ? now.join(',') :""
+  let may_a = Array.isArray(may) ? may.join(',') :""
+  let used_a = Array.isArray(used) ? used.join(',') :""
+  return `{now:${now_a}\n|may:${may_a}\n|used:${used_a}}`
 }
 
-/* 建立 */
-function insert(l  ,  r,  pre,  now, Fa, dep , val,pos,treeNum){
-  //复制
-  now = ++cnt;
-  tree_nodes.push( new Node(now,0))
-  tree_nodes[now].copy_from( tree_nodes[pre]);
-  tree_nodes[now].sum++;
-  tree_nodes[now].y = -dep;
-  tree_nodes[now].x = pos;
-  g.addNode(now,{
-    pos:tree_nodes[now].to_pos(),
-    label:tree_nodes[now].to_lable()
+function clear_node_color(){
+  g.eachNode( (node)=>{
+    let color = node.attributs.get('fillcolor')
+    if(color !== 'red')
+      node.attributs.set('fillcolor','white')
+  })
+}
+
+var dot_file_cnt = 0;
+
+let cnt = 0
+function dfs(dep,now,may,used,fa,choose){
+  let node_idx = ++node_idx_cnt;
+  //g.addNode(node_idx+'')
+  //if( fa != 0){
+    //g.addEdge(fa+'', node_idx+'')
+  //}
+  clear_node_color()
+  if( fa)
+    lib.set_edge(g,fa,node_idx,{style:"filled"})
+  lib.set_node(g,node_idx+'',{style:"filled",fillcolor:"lightblue"})
+  lib.set_node(g,node_idx+'',{
+    label: LabelStringify(now,may,used)
+  })
+  player.push({
+    dot_src: g.to_dot(),
+    log:choose ? `选 may中的 ${choose}` :"开始"
   })
 
-  if( l == r) return
 
-  var m = (l+r)>>1;
-  if( val <= m){
-    tree_nodes[now].l = cnt+1;
-    addEdge(now,tree_nodes[now].l)
-    addEdge(now,tree_nodes[now].r)
-    pos -= 0.5
-    if( dep == 1)
-      pos -= 0.5
-    insert(l, m, tree_nodes[pre].l, now, 1, dep+1, val, pos, treeNum)
+  if( may.length == 0 && used.length == 0){
+    console.log("=====================")
+    console.log(now)
+    console.log("=====================")
+    cnt++;
+
+    /* 结果 */
+
+    clear_node_color()
+    lib.set_node(g,node_idx+'',{
+      fillcolor:'red'
+    })
+    player.push({
+      dot_src: g.to_dot(),
+      log:'null'
+    })
+
+    return
   }
-  else{
-    tree_nodes[now].r = cnt+1;
-    addEdge(now,tree_nodes[now].l)
-    addEdge(now,tree_nodes[now].r)
-    pos += 0.5
-    if( dep == 1)
-      pos += 0.5
-    insert(m+1, r, tree_nodes[pre].r, now, 1, dep+1, val, pos, treeNum)
+
+  let now_now = Array.from(now);
+  let now_may= Array.from(may);
+  let now_used= Array.from(used);
+
+  for( let node of may){ //遍历 may中的点
+    //console.log(node)
+    let new_now = Array.from(now)
+    new_now.push(node)
+
+    let new_may = []
+
+    for( let n2 of now_may){
+      if( G[n2][node])
+        new_may.push(n2);
+    }
+
+    let new_used = []
+    for( let n3 of now_used){
+      if(G[n3][node])
+        new_used.push(n3);
+    }
+
+    dfs(dep+1,new_now,new_may,new_used,node_idx,node)
+    let idx = now_may.indexOf(node);
+    now_may.splice(idx,1)
+    now_used.push(node);
+
+    clear_node_color()
+    lib.set_node(g,node_idx+'',{style:"filled",fillcolor:"lightblue"})
+    lib.set_node(g,node_idx+'',{
+      label: LabelStringify(now_now,now_may,now_used)
+    })
+    player.push({
+      dot_src: g.to_dot(),
+      log:`${node} 加入used`
+    })
+
   }
+
 }
-//=========== 主席树
-
 
 async function main(){
   g = await parse('base.dot')
-  g.setNodeAttribut("shape","record")
-  var now
-  for( let i = 1;i<=5;i++){
-    root.push(cnt+1);
-    insert(1, 4, root[i-1], now, 0, 1, org_array[i], root_pos[i], i);
-    fs.writeFileSync(`animation_${i}.dot`, g.to_dot(),{encoding:'utf-8'})
-  }
-  console.log(g.to_dot())
+  lib.set_all_edge(g,{style:"invis"})
+  lib.set_all_node(g,{style:"invis"})
+  //console.log(g.to_dot())
+  dfs(1,0,[1,2,3,4,5],0,0);
+  player.dumpFile()
+
 }
 
 main()
+
