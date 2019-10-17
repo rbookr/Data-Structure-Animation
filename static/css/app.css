@@ -68,6 +68,9 @@ body {
     padding: 5px;
     background: gray; }
 
+.logbar {
+  text-align: center; }
+
 .container {
   color: #698bac;
   background: #000;
