@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700|Ruthie);
 html {
-  overflow: hidden;
+  overflow-x: hidden;
   height: 100%;
   width: 100%; }
 
@@ -33,6 +33,9 @@ body {
       padding: 2px 5px; }
   .ui .ui-panel {
     display: flex; }
+    .ui .ui-panel .contorl {
+      flex-grow: 0;
+      flex-shrink: 1; }
     .ui .ui-panel .process {
       position: relative;
       flex-grow: 1; }

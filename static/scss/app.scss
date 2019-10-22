@@ -1,5 +1,5 @@
 html  {
-  overflow: hidden;
+    overflow-x: hidden;
   height: 100%;
   width: 100%;
 }
@@ -38,6 +38,10 @@ body {
   }
   .ui-panel {
     display: flex;
+    .contorl {
+        flex-grow: 0;
+        flex-shrink: 1;
+    }
     .process {
         position: relative;
       flex-grow: 1;
