@@ -36,9 +36,9 @@ var G = [
 var _map1=[0,'1','3','4','x','y']
 var _map2 = {
   '1':1,
-  '3':2,
-  '4':3,
-  "x":4,
+  '3':3,
+  '4':4,
+  "x":2,
   "y":5
 }
 var data = [ ['1','x'], ['1','y'], ['x','y'], ['x','3'], ['x','4'], ['y','3'], ['y','4'], ['1','3'], ['1','4'] ]
@@ -156,7 +156,7 @@ async function main(){
   g = await parse('base.dot')
   lib.set_all_edge(g,{style:"invis"})
   lib.set_all_node(g,{style:"invis"})
-  //console.log(g.to_dot())
+  console.log(g.to_dot())
   dfs(1,0,[1,2,3,4,5],0,0);
   player.dumpFile()
 
