@@ -36,9 +36,9 @@ var G = [
 var _map1=[0,'1','3','4','x','y']
 var _map2 = {
   '1':1,
-  '3':2,
-  '4':3,
-  "x":4,
+  '3':3,
+  '4':4,
+  "x":2,
   "y":5
 }
 var data = [ ['1','x'], ['1','y'], ['x','y'], ['x','3'], ['x','4'], ['y','3'], ['y','4'], ['1','3'], ['1','4'] ]
@@ -159,7 +159,7 @@ function dfs(dep,now,may,used,fa,choose){
     clear_node_color()
     lib.set_node(g,node_idx+'',{style:"filled",fillcolor:"lightblue"})
     lib.set_node(g,node_idx+'',{
-      label: LabelStringify(now,may,used,u)
+      label: LabelStringify(now_now,now_may,now_used,u)
     })
     player.push({
       dot_src: g.to_dot(),
