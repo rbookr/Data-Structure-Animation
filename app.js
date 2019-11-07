@@ -9,7 +9,8 @@ class APP {
     /* 初始化 */
     this.address = window.location.pathname
     let url_hash = this.get_url_hash()
-    let url = url_hash.length ? 'project/'+url_hash+'/' : '/'
+    let url = url_hash.length ? 'project'+url_hash+'/' : '/'
+    this.url = url
     this.http = new HTTP(this.address, url)
   }
 
@@ -85,7 +86,7 @@ let template = `
 </div>
 `
 /* 渲染组件 */
-new Vue({
+window.app = new Vue({
   el:'#app',
   template,
   data:function(){
@@ -113,16 +114,26 @@ new Vue({
       return
     }
 
+
     this.player =  await self.app.http.get('dump.json').then( (res)=>{
       var player = new Player()
       player.load(res)
       return player
+    }).catch( (e)=>{
+      console.log(`======== 尝试加载 ${self.app.url}app.js ========`)
+      $.getScript(`${self.app.url}app.js`,function(){ console.log(`get ${self.app.url}app.js done!`)})
+      //document.writeln(`<script src="${self.app.url}app.js"></script>`)
+      console.log(e)
+      console.log("=====================")
     })
 
-    this.player.init( function(){
-      //self.player.auto_player()
-      self.player.play_frame_at(0)
-    })
+
+    try {
+      this.player.init( function(){
+        self.player.play_frame_at(0)
+      })
+    }
+    catch(e){}
 
   },
   methods:{
