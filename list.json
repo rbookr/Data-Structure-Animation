@@ -2,5 +2,6 @@
     {"name":"冒泡排序","link":"bubble_sort"},
     {"name":"极大团计数Version1","link":"maximal_clique"},
     {"name":"极大团计数Version2","link":"maximal_clique_v2"},
-    {"name":"fhq-treap 随机生成","link":"fhq-treap-random"}
+    {"name":"fhq-treap 随机生成","link":"fhq-treap-random"},
+    {"name":"fhq-treap split 演示","link":"fhq-treap-split"}
 ]
