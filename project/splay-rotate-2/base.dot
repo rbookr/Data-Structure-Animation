@@ -1,0 +1,11 @@
+digraph g {
+    node[shape=circle fixedsize=true style=filled fillcolor=white colorscheme=accent8 ];
+    3->A;
+    3->2;
+    2->B;
+    2->1;
+    1->C;
+    1->D;
+    A,B,C,D[shape=triangle height=0.8 width=0.8 fillcolor="1"];
+    3[label="X" fillcolor="2"]
+}

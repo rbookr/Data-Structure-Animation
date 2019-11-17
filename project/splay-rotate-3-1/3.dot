@@ -1,0 +1,12 @@
+digraph zigzag{
+    node[shape=circle fixedsize=true style=filled fillcolor=white colorscheme=accent8 ];
+    X->1;
+    1->A;
+    2->C;
+    2->D;
+    1->B;
+    X->2;
+   
+    A,B,C,D[shape=triangle height=0.8 width=0.8 fillcolor="1"];
+    X[fillcolor="2"]
+}

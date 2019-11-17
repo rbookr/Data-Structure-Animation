@@ -1,0 +1,91 @@
+graph g {
+    node[shape=plaintext colorscheme=accent8 ];
+    //4 --9[label="L"];
+    9;
+    5;
+    1;
+    3;
+    4--9[label="L" ];
+    6--x9[label=L];
+    6--x5[style=invis];
+    4 --x1[style=invis];
+    x1[style=invis];
+    9 --1[label="L"];
+    9--3[label="R" ];
+    //9--5[label=R];
+    //9 --3[label="R"];
+    //3 --5[label="L"];
+    3--5[label="L" ];
+    3 --x2[style=invis];
+    x2[style=invis];
+    5 --x3[style=invis];
+    x3[style=invis];
+    5 --7[label="R"];
+    6 --8[label="R"];
+    8 --x4[style=invis];
+    x4[style=invis];
+    8 --2[label="R"];
+    //3--7[label=L];
+    //4--3[label=L];
+    //6--4[label=L];
+
+    x5[label="NULL" style=invis];
+    x6[label="NULL" style=invis];
+    x7[label="NULL" style=invis];
+    x8[label="NULL" style=invis];
+    x9[label="NULL" ];
+
+
+    1[ label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0" CELLPADDING="2" BGCOLOR="1">
+        <tr> <td >val</td> <td>1</td> </tr> 
+        <tr> <td >key</td> <td>35</td> 
+        </tr>
+        </TABLE> >
+    ];
+    2[ label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0" CELLPADDING="2" 
+>
+        <tr> <td >val</td> <td>27</td> </tr>
+        <tr> <td >key</td> <td>53</td> </tr>
+        </TABLE> >
+    ];
+    3[ label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0" CELLPADDING="2" BGCOLOR="1">
+        <tr> <td >val</td> <td>17</td> </tr>
+        <tr> <td >key</td> <td>58</td> </tr>
+        </TABLE> >
+    ];
+    4[ label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0" CELLPADDING="2" BGCOLOR="1">
+        <tr> <td >val</td> <td >19</td> </tr>
+        <tr> <td >key</td> <td>86</td> </tr>
+        </TABLE> >
+    ];
+    5[ label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0" CELLPADDING="2" BGCOLOR="1">
+        <tr> <td >val</td> <td>9</td> </tr>
+        <tr> <td >key</td> <td>52</td> </tr>
+        </TABLE> >
+    ];
+    6[ label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0" CELLPADDING="2" >
+        <tr> 
+            <td >val</td> 
+            <td >26</td> </tr>
+        <tr> 
+            <td >key</td> 
+            <td >99</td> 
+        </tr>
+        </TABLE> >
+    ];
+    7[ label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0" CELLPADDING="2" BGCOLOR="1">
+        <tr> <td >val</td> <td>13</td> </tr>
+        <tr> <td >key</td> <td>28</td> </tr>
+        </TABLE> >
+    ];
+    8[ label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0" CELLPADDING="2" >
+        <tr> <td >val</td> <td>27</td> </tr>
+        <tr> <td >key</td> <td>78</td> </tr>
+        </TABLE> >
+    ];
+    9[ label=< <TABLE CELLBORDER="1" BORDER="0" CELLSPACING="0" CELLPADDING="2" BGCOLOR="1">
+        <tr> <td >val</td> <td>4</td> </tr>
+        <tr> <td >key</td> <td>65</td> </tr>
+        </TABLE> >
+    ];
+}
