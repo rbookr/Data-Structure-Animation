@@ -8,4 +8,6 @@ digraph zagzig{
     X->C;
     A,B,C,D[shape=triangle height=0.8 width=0.8 fillcolor="1"];
     X[fillcolor="2"]
+    2[label="f"];
+    1[label="ff"];
 }
