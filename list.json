@@ -4,5 +4,8 @@
     {"name":"极大团计数Version2","link":"maximal_clique_v2"},
     {"name":"fhq-treap 随机生成","link":"fhq-treap-random"},
     {"name":"fhq-treap split 演示","link":"fhq-treap-split"},
-    {"name":"fhq-treap merge演示","link":"fhq-treap-merge"}
+    {"name":"fhq-treap merge演示","link":"fhq-treap-merge"},
+    {"name":"Splay zig-zig/zag-zag 演示","link":"splay-rotate-2"},
+    {"name":"Splay zig-zag演示","link":"splay-rotate-3-1"},
+    {"name":"Splay zag-zig演示","link":"splay-rotate-3-2"}
 ]
