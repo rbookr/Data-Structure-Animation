@@ -142,7 +142,7 @@ var gen_data = function(){
   }
 }
 
-$.getScript(`project/fhq-treap-random/random-js.min.js`,function(){ 
+$.getScript(`static/js-ext/random-js.min.js`,function(){ 
   console.log(`get random-js.min.js done!`)
   $(".app .ui").hide()
   $(".app").append(`<button id="gen_data">生成</button>`)

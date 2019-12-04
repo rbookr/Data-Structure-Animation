@@ -7,5 +7,7 @@
     {"name":"fhq-treap merge演示","link":"fhq-treap-merge"},
     {"name":"Splay zig-zig/zag-zag 演示","link":"splay-rotate-2"},
     {"name":"Splay zig-zag演示","link":"splay-rotate-3-1"},
-    {"name":"Splay zag-zig演示","link":"splay-rotate-3-2"}
+    {"name":"Splay zag-zig演示","link":"splay-rotate-3-2"},
+    {"name":"2-sat hdu-1814 演示","link":"2-sta-hdu-1814"}
+
 ]
